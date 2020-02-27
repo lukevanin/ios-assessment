@@ -33,6 +33,8 @@ private final class MockService: IKYSService {
 
 
 class KYSModelTestCase: XCTestCase {
+    
+    // MARK: - Check
 
     func testCheckUpToDate() {
         let service = MockService()
@@ -46,7 +48,7 @@ class KYSModelTestCase: XCTestCase {
             )
             completion(.success(profile))
         }
-        await(model: model, event: .finished) {
+        await(model: model, event: .upToDate) {
             model.check()
         }
     }
@@ -80,7 +82,93 @@ class KYSModelTestCase: XCTestCase {
             model.check()
         }
     }
+    
+    // MARK: - Prompt
+    
+    func testPromptCancel() {
+        let service = MockService()
+        let model = KYSModel(
+            service: service
+        )
+        model.gotoPromptState()
+        await(model: model, event: .postponed) {
+            model.cancel()
+        }
+    }
 
+    func testPromptUpdate() {
+        let service = MockService()
+        let model = KYSModel(
+            service: service
+        )
+        model.gotoPromptState()
+        await(model: model, event: .update) {
+            model.update()
+        }
+    }
+    
+    // MARK: - Update
+    
+    func testUpdateCancel() {
+        let service = MockService()
+        let model = KYSModel(
+            service: service
+        )
+        model.gotoUpdateState()
+        await(model: model, event: .cancelled) {
+            model.cancel()
+        }
+    }
+    
+    func testUpdateSave() {
+        let service = MockService()
+        let model = KYSModel(
+            service: service
+        )
+        model.gotoUpdateState()
+        let x = expectation(description: "post-status")
+        service._postStatus = { status, _ in
+            XCTAssertEqual(status, .negative)
+            x.fulfill()
+        }
+        await(model: model, event: .save) {
+            model.save(status: .negative)
+        }
+        wait(for: [x], timeout: 1.0)
+    }
+    
+    // MARK: - Save
+    
+    func testSaveFailure() {
+        let service = MockService()
+        let model = KYSModel(
+            service: service
+        )
+        model.gotoUpdateState()
+        service._postStatus = { _, completion in
+            completion(false)
+        }
+        await(model: model, event: .failed) {
+            model.gotoSaveState(status: .negative)
+        }
+    }
+    
+    func testSaveSuccess() {
+        let service = MockService()
+        let model = KYSModel(
+            service: service
+        )
+        model.gotoUpdateState()
+        service._postStatus = { _, completion in
+            completion(true)
+        }
+        await(model: model, event: .updated) {
+            model.gotoSaveState(status: .negative)
+        }
+    }
+
+    // Utils
+    
     private func await(model: KYSModel, event: KYSEvent, block: () -> Void) {
         let x = expectation(description: "event")
         model.onEvent = { e in

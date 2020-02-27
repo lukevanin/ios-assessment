@@ -28,15 +28,20 @@ public enum KYSEvent {
     case prompt
     case update
     case save
-    case failed
+    case updated
+    case upToDate
+    case cancelled
+    case postponed
     case finished
+    case failed
 }
 
 
 protocol IState {
     func check()
+    func update()
     func cancel()
-    func save()
+    func save(status: KYSStatus)
 }
 
 
@@ -44,7 +49,7 @@ protocol IStateContext: class {
     func gotoCheckState()
     func gotoPromptState()
     func gotoUpdateState()
-    func gotoSaveState()
+    func gotoSaveState(status: KYSStatus)
     func gotoFinalState(result: KYSResult)
     func notify(event: KYSEvent)
     func getStatus(completion: @escaping (Result<KYSProfile, Error>) -> Void)
@@ -63,11 +68,11 @@ private class AnyState: IState {
     }
     func check() {
     }
+    func update() {
+    }
     func cancel() {
     }
-    func save() {
-    }
-    func update() {
+    func save(status: KYSStatus) {
     }
 }
 
@@ -100,16 +105,50 @@ private class PromptState: AnyState {
     override func enter() {
         context?.notify(event: .prompt)
     }
+    override func update() {
+        context?.gotoUpdateState()
+    }
+    override func cancel() {
+        context?.gotoFinalState(result: .userPostponed)
+    }
 }
 
 
 private class UpdateState: AnyState {
-    
+    override func enter() {
+        context?.notify(event: .update)
+    }
+    override func cancel() {
+        context?.gotoFinalState(result: .userCancelled)
+    }
+    override func save(status: KYSStatus) {
+        context?.gotoSaveState(status: status)
+    }
 }
 
 
 private class SaveState: AnyState {
-    
+    private let status: KYSStatus
+    init(status: KYSStatus, context: IStateContext) {
+        self.status = status
+        super.init(context: context)
+    }
+    override func enter() {
+        context?.notify(event: .save)
+        context?.saveStatus(status: status) { [weak self] success in
+            DispatchQueue.main.async {
+                guard let self = self else {
+                    return
+                }
+                if success {
+                    self.context?.gotoFinalState(result: .success)
+                }
+                else {
+                    self.context?.gotoFinalState(result: .failure)
+                }
+            }
+        }
+    }
 }
 
 
@@ -124,13 +163,13 @@ private class FinalState: AnyState {
         case .failure:
             context?.notify(event: .failed)
         case .success:
-            context?.notify(event: .finished)
+            context?.notify(event: .updated)
         case .upToDate:
-            context?.notify(event: .finished)
+            context?.notify(event: .upToDate)
         case .userPostponed:
-            context?.notify(event: .finished)
+            context?.notify(event: .postponed)
         case .userCancelled:
-            context?.notify(event: .finished)
+            context?.notify(event: .cancelled)
         }
     }
     override func check() {
@@ -161,35 +200,35 @@ public class KYSModel: IStateContext, IState {
         currentState?.enter()
     }
     
-    func gotoCheckState() {
+    internal func gotoCheckState() {
         setState(CheckState(context: self))
     }
     
-    func gotoPromptState() {
+    internal func gotoPromptState() {
         setState(PromptState(context: self))
     }
     
-    func gotoUpdateState() {
+    internal func gotoUpdateState() {
         setState(UpdateState(context: self))
     }
     
-    func gotoSaveState() {
-        setState(SaveState(context: self))
+    internal func gotoSaveState(status: KYSStatus) {
+        setState(SaveState(status: status, context: self))
     }
     
-    func gotoFinalState(result: KYSResult) {
+    internal func gotoFinalState(result: KYSResult) {
         setState(FinalState(result: result, context: self))
     }
     
-    func notify(event: KYSEvent) {
+    internal func notify(event: KYSEvent) {
         onEvent?(event)
     }
     
-    func getStatus(completion: @escaping (Result<KYSProfile, Error>) -> Void) {
+    internal func getStatus(completion: @escaping (Result<KYSProfile, Error>) -> Void) {
         service.getStatus(completion: completion)
     }
     
-    func saveStatus(status: KYSStatus, completion: @escaping (Bool) -> Void) {
+    internal func saveStatus(status: KYSStatus, completion: @escaping (Bool) -> Void) {
         service.postStatus(status: status, completion: completion)
     }
     
@@ -199,8 +238,12 @@ public class KYSModel: IStateContext, IState {
         currentState?.check()
     }
     
-    public func save() {
-        currentState?.save()
+    public func update() {
+        currentState?.update()
+    }
+
+    public func save(status: KYSStatus) {
+        currentState?.save(status: status)
     }
     
     public func cancel() {

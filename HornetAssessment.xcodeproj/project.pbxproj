@@ -23,6 +23,7 @@
 		FCEDD9B12407D46600B181FE /* TestScrollableStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B02407D46600B181FE /* TestScrollableStackViewController.swift */; };
 		FCEDD9B32407D69A00B181FE /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B22407D69A00B181FE /* BrowserViewController.swift */; };
 		FCEDD9B52407DFEA00B181FE /* TestBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B42407DFEA00B181FE /* TestBrowserViewController.swift */; };
+		FCEDD9B7240827CF00B181FE /* ImageLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B6240827CF00B181FE /* ImageLabelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		FCEDD9B02407D46600B181FE /* TestScrollableStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScrollableStackViewController.swift; sourceTree = "<group>"; };
 		FCEDD9B22407D69A00B181FE /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
 		FCEDD9B42407DFEA00B181FE /* TestBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBrowserViewController.swift; sourceTree = "<group>"; };
+		FCEDD9B6240827CF00B181FE /* ImageLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				FCEDD9AA2407CE7500B181FE /* ScrollableStackView.swift */,
 				FCEDD9AE2407D38B00B181FE /* ScrollableStackViewController.swift */,
 				FCEDD9B22407D69A00B181FE /* BrowserViewController.swift */,
+				FCEDD9B6240827CF00B181FE /* ImageLabelView.swift */,
 			);
 			path = ComponentKit;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCEDD9B32407D69A00B181FE /* BrowserViewController.swift in Sources */,
+				FCEDD9B7240827CF00B181FE /* ImageLabelView.swift in Sources */,
 				FCEDD9AB2407CE7500B181FE /* ScrollableStackView.swift in Sources */,
 				FCEDD9AF2407D38B00B181FE /* ScrollableStackViewController.swift in Sources */,
 			);

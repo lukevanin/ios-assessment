@@ -9,34 +9,6 @@
 import UIKit
 
 
-//public class PageCollectionViewCell: UICollectionViewCell {
-//
-//    public let itemsView = ScrollableStackView()
-//
-//    public override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        initialize()
-//    }
-//
-//    public required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        initialize()
-//    }
-//
-//    private func initialize() {
-//        #warning("TODO: Remove background colour")
-//        contentView.backgroundColor = .brown
-//        itemsView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.addSubview(itemsView)
-//        NSLayoutConstraint.activate([
-//            itemsView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-//            itemsView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-//            itemsView.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            itemsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-//            ])
-//    }
-//}
-
 public class ContainerCollectionViewCell: UICollectionViewCell {
     
     typealias OnPrepareForReuse = (ContainerCollectionViewCell) -> Void
@@ -102,8 +74,8 @@ open class BrowserViewController: UIViewController {
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(
-            width: screenSize.width,
-            height: 300
+            width: 100,
+            height: 100
         )
         let view = UICollectionView(
             frame: CGRect(
@@ -143,6 +115,10 @@ open class BrowserViewController: UIViewController {
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         collectionView.flashScrollIndicators()
+    }
+    
+    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     public func reloadData() {

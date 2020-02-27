@@ -12,36 +12,29 @@ import ComponentKit
 
 final class TestScrollableStackViewController: ScrollableStackViewController {
     
-    var name: String? {
-        didSet {
-            reload()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         contentView.contentInsetAdjustmentBehavior = .always
         contentView.alwaysBounceVertical = true
+        dataSource = self
+        reloadData()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        reload()
-    }
-    
-    private func reload() {
-        let views = contentView.stackView.arrangedSubviews
-        views.forEach { view in
-            view.removeFromSuperview()
-        }
-        
-        for i in 0 ..< 100 {
-            let view = UILabel()
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.text = "Label \(name) #\(i)"
-            view.backgroundColor = .yellow
-            contentView.stackView.addArrangedSubview(view)
-        }
-    }
+}
 
+extension TestScrollableStackViewController: ListControllerDataSource {
+    
+    func numberOfItems(in list: UIViewController) -> Int {
+        return 10
+    }
+    
+    func list(_ controller: UIViewController, viewForItemAtIndex index: Int) -> UIView {
+        let spam = (0 ..< index).map { i in
+            return String(i)
+        }
+        let view = ImageLabelView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.titleLabel.text = "Label #\(index)\n" + spam.joined(separator: "\n")
+        view.backgroundColor = .yellow
+        return view
+    }
 }

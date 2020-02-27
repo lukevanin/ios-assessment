@@ -35,6 +35,7 @@ public final class ScrollableStackView: UIScrollView {
             stackView.rightAnchor.constraint(equalTo: rightAnchor),
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            stackView.widthAnchor.constraint(equalTo: widthAnchor),
             ])
     }
 }

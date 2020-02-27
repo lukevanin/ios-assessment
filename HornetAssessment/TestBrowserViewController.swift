@@ -29,12 +29,11 @@ public final class TestBrowserViewController: BrowserViewController {
 extension TestBrowserViewController: BrowserControllerDataSource {
 
     public func numberOfPages(in controller: BrowserViewController) -> Int {
-        return 10
+        return 100
     }
     
     public func browser(_ controller: BrowserViewController, viewControllerForPageAtIndex index: Int) -> UIViewController {
         let viewController = TestScrollableStackViewController()
-        viewController.name = String(index)
         viewController.view.backgroundColor = colors[index % colors.count]
         viewController.contentView.clipsToBounds = false
         return viewController

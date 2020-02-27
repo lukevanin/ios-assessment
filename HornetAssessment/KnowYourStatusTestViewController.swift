@@ -8,16 +8,6 @@
 
 import UIKit
 
-
-public enum KYSState {
-    case upToDate
-    case userDeferred
-    case userCancelled
-    case failure
-    case updated
-}
-
-
 public final class KnowYourStatusTestViewController: UIViewController {
     
 }

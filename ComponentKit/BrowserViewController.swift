@@ -9,9 +9,57 @@
 import UIKit
 
 
-public class PageCollectionViewCell: UICollectionViewCell {
+//public class PageCollectionViewCell: UICollectionViewCell {
+//
+//    public let itemsView = ScrollableStackView()
+//
+//    public override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        initialize()
+//    }
+//
+//    public required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        initialize()
+//    }
+//
+//    private func initialize() {
+//        #warning("TODO: Remove background colour")
+//        contentView.backgroundColor = .brown
+//        itemsView.translatesAutoresizingMaskIntoConstraints = false
+//        contentView.addSubview(itemsView)
+//        NSLayoutConstraint.activate([
+//            itemsView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+//            itemsView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+//            itemsView.topAnchor.constraint(equalTo: contentView.topAnchor),
+//            itemsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+//            ])
+//    }
+//}
+
+public class ContainerCollectionViewCell: UICollectionViewCell {
     
-    public let itemsView = ScrollableStackView()
+    typealias OnPrepareForReuse = (ContainerCollectionViewCell) -> Void
+    
+    var onPrepareForReuse: OnPrepareForReuse?
+    
+    var containedView: UIView? {
+        didSet {
+            if let view = oldValue {
+                view.removeFromSuperview()
+            }
+            if let view = containedView {
+                view.translatesAutoresizingMaskIntoConstraints = false
+                contentView.addSubview(view)
+                NSLayoutConstraint.activate([
+                    view.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+                    view.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+                    view.topAnchor.constraint(equalTo: contentView.topAnchor),
+                    view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+                    ])
+            }
+        }
+    }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,38 +72,39 @@ public class PageCollectionViewCell: UICollectionViewCell {
     }
     
     private func initialize() {
-        #warning("TODO: Remove background colour")
-        contentView.backgroundColor = .brown
-        itemsView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(itemsView)
-        NSLayoutConstraint.activate([
-            itemsView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            itemsView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            itemsView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            itemsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            ])
+        clipsToBounds = false
+        contentView.clipsToBounds = false
+    }
+    
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        onPrepareForReuse?(self)
     }
 }
 
 
 public protocol BrowserControllerDataSource: class {
     func numberOfPages(in controller: BrowserViewController) -> Int
-    func browser(_ controller: BrowserViewController, configureView view: PageCollectionViewCell, forPageAtIndex index: Int)
+    func browser(_ controller: BrowserViewController, viewControllerForPageAtIndex index: Int) -> UIViewController
 }
 
 
 open class BrowserViewController: UIViewController {
     
-    private let pageCellIdentifier = "page-cell"
+    private let containerCellIdentifier = "container-cell"
     
     public weak var dataSource: BrowserControllerDataSource?
     
-    private let collectionView: UICollectionView = {
+    public let collectionView: UICollectionView = {
+        let screenSize = UIScreen.main.bounds.size
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-        layout.itemSize = UIScreen.main.bounds.size
+        layout.itemSize = CGSize(
+            width: screenSize.width,
+            height: 300
+        )
         let view = UICollectionView(
             frame: CGRect(
                 x: 0,
@@ -77,19 +126,11 @@ open class BrowserViewController: UIViewController {
         collectionView.alwaysBounceHorizontal = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(
-            PageCollectionViewCell.self,
-            forCellWithReuseIdentifier: pageCellIdentifier
+            ContainerCollectionViewCell.self,
+            forCellWithReuseIdentifier: containerCellIdentifier
         )
-
-        view.addSubview(collectionView)
-        NSLayoutConstraint.activate([
-            collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            ])
         
-//        self.view = collectionView
+        self.view = collectionView
     }
     
     open override func viewDidLoad() {
@@ -121,15 +162,22 @@ extension BrowserViewController: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: pageCellIdentifier,
+            withReuseIdentifier: containerCellIdentifier,
             for: indexPath
         )
-        if let cell = cell as? PageCollectionViewCell {
-            dataSource?.browser(
-                self,
-                configureView: cell,
-                forPageAtIndex: indexPath.item
-            )
+        if let cell = cell as? ContainerCollectionViewCell {
+            if let viewController = dataSource?.browser(self, viewControllerForPageAtIndex: indexPath.item) {
+                viewController.willMove(toParent: self)
+                addChild(viewController)
+                cell.containedView = viewController.view
+                viewController.didMove(toParent: self)
+                cell.onPrepareForReuse = { [weak viewController] cell in
+                    viewController?.willMove(toParent: nil)
+                    cell.containedView = nil
+                    viewController?.removeFromParent()
+                    viewController?.didMove(toParent: nil)
+                }
+            }
         }
         return cell
     }
@@ -137,4 +185,16 @@ extension BrowserViewController: UICollectionViewDataSource {
 
 extension BrowserViewController: UICollectionViewDelegate {
     
+}
+
+extension BrowserViewController: UICollectionViewDelegateFlowLayout {
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = collectionView.bounds.size
+        let contentInset = collectionView.adjustedContentInset
+        return CGSize(
+            width: size.width - (contentInset.left + contentInset.right),
+            height: size.height - (contentInset.top + contentInset.bottom)
+        )
+    }
 }

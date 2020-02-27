@@ -29,7 +29,6 @@ public final class ScrollableStackView: UIScrollView {
     
     private func initialize() {
         #warning("TODO: Placeholder colour for debugging. Remove for production.")
-        backgroundColor = .green
         addSubview(stackView)
         NSLayoutConstraint.activate([
             stackView.leftAnchor.constraint(equalTo: leftAnchor),

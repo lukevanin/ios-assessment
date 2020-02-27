@@ -11,6 +11,13 @@ import UIKit
 import ComponentKit
 
 public final class TestBrowserViewController: BrowserViewController {
+    
+    private let colors: [UIColor] = [.red, .orange, .yellow, .green, .blue]
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.contentInsetAdjustmentBehavior = .always
+    }
 
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -25,17 +32,11 @@ extension TestBrowserViewController: BrowserControllerDataSource {
         return 10
     }
     
-    public func browser(_ controller: BrowserViewController, configureView view: PageCollectionViewCell, forPageAtIndex index: Int) {
-        // Add test content
-        let views = view.itemsView.stackView.subviews
-        views.forEach { $0.removeFromSuperview() }
-        for i in 0 ..< 50 {
-            let label = UILabel()
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = "Label #\(index).\(i)"
-            label.backgroundColor = .cyan
-            view.itemsView.stackView.addArrangedSubview(label)
-        }
-        view.itemsView.layoutIfNeeded()
+    public func browser(_ controller: BrowserViewController, viewControllerForPageAtIndex index: Int) -> UIViewController {
+        let viewController = TestScrollableStackViewController()
+        viewController.name = String(index)
+        viewController.view.backgroundColor = colors[index % colors.count]
+        viewController.contentView.clipsToBounds = false
+        return viewController
     }
 }

@@ -24,6 +24,7 @@
 		FCEDD9B32407D69A00B181FE /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B22407D69A00B181FE /* BrowserViewController.swift */; };
 		FCEDD9B52407DFEA00B181FE /* TestBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B42407DFEA00B181FE /* TestBrowserViewController.swift */; };
 		FCEDD9B7240827CF00B181FE /* ImageLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B6240827CF00B181FE /* ImageLabelView.swift */; };
+		FCEDD9B924082C8A00B181FE /* KnowYourStatusTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B824082C8A00B181FE /* KnowYourStatusTestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		FCEDD9B22407D69A00B181FE /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
 		FCEDD9B42407DFEA00B181FE /* TestBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBrowserViewController.swift; sourceTree = "<group>"; };
 		FCEDD9B6240827CF00B181FE /* ImageLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelView.swift; sourceTree = "<group>"; };
+		FCEDD9B824082C8A00B181FE /* KnowYourStatusTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowYourStatusTestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				FCEDD9672407CCA600B181FE /* ScrollableStackViewTestViewController.swift */,
 				FCEDD9B02407D46600B181FE /* TestScrollableStackViewController.swift */,
 				FCEDD9B42407DFEA00B181FE /* TestBrowserViewController.swift */,
+				FCEDD9B824082C8A00B181FE /* KnowYourStatusTestViewController.swift */,
 				FCEDD96C2407CCA700B181FE /* Assets.xcassets */,
 				FCEDD96E2407CCA700B181FE /* LaunchScreen.storyboard */,
 				FCEDD9712407CCA700B181FE /* Info.plist */,
@@ -373,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCEDD9B924082C8A00B181FE /* KnowYourStatusTestViewController.swift in Sources */,
 				FCEDD9682407CCA600B181FE /* ScrollableStackViewTestViewController.swift in Sources */,
 				FCEDD9B12407D46600B181FE /* TestScrollableStackViewController.swift in Sources */,
 				FCEDD9662407CCA600B181FE /* AppDelegate.swift in Sources */,

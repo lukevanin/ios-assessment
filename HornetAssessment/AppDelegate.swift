@@ -14,7 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let viewController = TestViewController()
+//        let viewController = ScrollableStackViewTestViewController()
+        let viewController = TestScrollableStackViewController()
         let window = UIWindow()
         window.rootViewController = viewController
         window.makeKeyAndVisible()

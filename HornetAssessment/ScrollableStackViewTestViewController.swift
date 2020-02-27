@@ -10,15 +10,15 @@ import UIKit
 
 import ComponentKit
 
-final class TestViewController: UIViewController {
+final class ScrollableStackViewTestViewController: UIViewController {
+    
+    private let layout = ScrollableStackView()
     
     override func loadView() {
         super.loadView()
-        
-        // Add scrolling layout to view.
-        let layout = ScrollableStackView()
+
+        // Set up scroll view.
         layout.translatesAutoresizingMaskIntoConstraints = false
-        layout.alwaysBounceVertical = true
         layout.insetsLayoutMarginsFromSafeArea = true
         view.addSubview(layout)
         NSLayoutConstraint.activate([
@@ -27,7 +27,11 @@ final class TestViewController: UIViewController {
             layout.topAnchor.constraint(equalTo: view.topAnchor),
             layout.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             ])
-        
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         // Add test content
         for i in 0 ..< 10 {
             let view = UILabel()
@@ -36,10 +40,7 @@ final class TestViewController: UIViewController {
             view.backgroundColor = .orange
             layout.stackView.addArrangedSubview(view)
         }
-    }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        #warning("TODO: Fix incorrect scroll position on load")
     }
 }

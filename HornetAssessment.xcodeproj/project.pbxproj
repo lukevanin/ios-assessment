@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FCEDD9662407CCA600B181FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9652407CCA600B181FE /* AppDelegate.swift */; };
-		FCEDD9682407CCA600B181FE /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9672407CCA600B181FE /* TestViewController.swift */; };
+		FCEDD9682407CCA600B181FE /* ScrollableStackViewTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9672407CCA600B181FE /* ScrollableStackViewTestViewController.swift */; };
 		FCEDD96D2407CCA700B181FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCEDD96C2407CCA700B181FE /* Assets.xcassets */; };
 		FCEDD9702407CCA700B181FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCEDD96E2407CCA700B181FE /* LaunchScreen.storyboard */; };
 		FCEDD97B2407CCA700B181FE /* HornetAssessmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD97A2407CCA700B181FE /* HornetAssessmentTests.swift */; };
@@ -19,6 +19,8 @@
 		FCEDD9A12407CE6600B181FE /* ComponentKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCEDD98C2407CE6600B181FE /* ComponentKit.framework */; };
 		FCEDD9A22407CE6600B181FE /* ComponentKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FCEDD98C2407CE6600B181FE /* ComponentKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FCEDD9AB2407CE7500B181FE /* ScrollableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9AA2407CE7500B181FE /* ScrollableStackView.swift */; };
+		FCEDD9AF2407D38B00B181FE /* ScrollableStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9AE2407D38B00B181FE /* ScrollableStackViewController.swift */; };
+		FCEDD9B12407D46600B181FE /* TestScrollableStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B02407D46600B181FE /* TestScrollableStackViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +71,7 @@
 /* Begin PBXFileReference section */
 		FCEDD9622407CCA600B181FE /* HornetAssessment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HornetAssessment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCEDD9652407CCA600B181FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FCEDD9672407CCA600B181FE /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		FCEDD9672407CCA600B181FE /* ScrollableStackViewTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableStackViewTestViewController.swift; sourceTree = "<group>"; };
 		FCEDD96C2407CCA700B181FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCEDD96F2407CCA700B181FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCEDD9712407CCA700B181FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -84,6 +86,8 @@
 		FCEDD99B2407CE6600B181FE /* ComponentKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentKitTests.swift; sourceTree = "<group>"; };
 		FCEDD99D2407CE6600B181FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCEDD9AA2407CE7500B181FE /* ScrollableStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableStackView.swift; sourceTree = "<group>"; };
+		FCEDD9AE2407D38B00B181FE /* ScrollableStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableStackViewController.swift; sourceTree = "<group>"; };
+		FCEDD9B02407D46600B181FE /* TestScrollableStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScrollableStackViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +151,8 @@
 			children = (
 				FCEDD9852407CDF800B181FE /* README.md */,
 				FCEDD9652407CCA600B181FE /* AppDelegate.swift */,
-				FCEDD9672407CCA600B181FE /* TestViewController.swift */,
+				FCEDD9672407CCA600B181FE /* ScrollableStackViewTestViewController.swift */,
+				FCEDD9B02407D46600B181FE /* TestScrollableStackViewController.swift */,
 				FCEDD96C2407CCA700B181FE /* Assets.xcassets */,
 				FCEDD96E2407CCA700B181FE /* LaunchScreen.storyboard */,
 				FCEDD9712407CCA700B181FE /* Info.plist */,
@@ -170,6 +175,7 @@
 				FCEDD98E2407CE6600B181FE /* ComponentKit.h */,
 				FCEDD98F2407CE6600B181FE /* Info.plist */,
 				FCEDD9AA2407CE7500B181FE /* ScrollableStackView.swift */,
+				FCEDD9AE2407D38B00B181FE /* ScrollableStackViewController.swift */,
 			);
 			path = ComponentKit;
 			sourceTree = "<group>";
@@ -358,7 +364,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCEDD9682407CCA600B181FE /* TestViewController.swift in Sources */,
+				FCEDD9682407CCA600B181FE /* ScrollableStackViewTestViewController.swift in Sources */,
+				FCEDD9B12407D46600B181FE /* TestScrollableStackViewController.swift in Sources */,
 				FCEDD9662407CCA600B181FE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCEDD9AB2407CE7500B181FE /* ScrollableStackView.swift in Sources */,
+				FCEDD9AF2407D38B00B181FE /* ScrollableStackViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

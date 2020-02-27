@@ -10,22 +10,22 @@ import UIKit
 
 import ComponentKit
 
-public final class TestPageViewController: PageViewController {
+public final class TestBrowserViewController: BrowserViewController {
 
-    public override func viewDidLoad() {
-        super.viewDidLoad()
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         dataSource = self
         reloadData()
     }
 }
 
-extension TestPageViewController: PageControllerDataSource {
+extension TestBrowserViewController: BrowserControllerDataSource {
 
-    public func pageControllerNumberOfPages(controller: PageViewController) -> Int {
+    public func numberOfPages(in controller: BrowserViewController) -> Int {
         return 10
     }
     
-    public func pageController(controller: PageViewController, configureView view: PageCollectionViewCell, forPageAtIndex index: Int) {
+    public func browser(_ controller: BrowserViewController, configureView view: PageCollectionViewCell, forPageAtIndex index: Int) {
         // Add test content
         let views = view.itemsView.stackView.subviews
         views.forEach { $0.removeFromSuperview() }
@@ -36,5 +36,6 @@ extension TestPageViewController: PageControllerDataSource {
             label.backgroundColor = .cyan
             view.itemsView.stackView.addArrangedSubview(label)
         }
+        view.itemsView.layoutIfNeeded()
     }
 }

@@ -38,17 +38,17 @@ public class PageCollectionViewCell: UICollectionViewCell {
 }
 
 
-public protocol PageControllerDataSource: class {
-    func pageControllerNumberOfPages(controller: PageViewController) -> Int
-    func pageController(controller: PageViewController, configureView view: PageCollectionViewCell, forPageAtIndex index: Int)
+public protocol BrowserControllerDataSource: class {
+    func numberOfPages(in controller: BrowserViewController) -> Int
+    func browser(_ controller: BrowserViewController, configureView view: PageCollectionViewCell, forPageAtIndex index: Int)
 }
 
 
-open class PageViewController: UIViewController {
+open class BrowserViewController: UIViewController {
     
     private let pageCellIdentifier = "page-cell"
     
-    public weak var dataSource: PageControllerDataSource?
+    public weak var dataSource: BrowserControllerDataSource?
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -109,14 +109,14 @@ open class PageViewController: UIViewController {
     }
 }
 
-extension PageViewController: UICollectionViewDataSource {
+extension BrowserViewController: UICollectionViewDataSource {
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.pageControllerNumberOfPages(controller: self) ?? 0
+        return dataSource?.numberOfPages(in: self) ?? 0
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -125,8 +125,8 @@ extension PageViewController: UICollectionViewDataSource {
             for: indexPath
         )
         if let cell = cell as? PageCollectionViewCell {
-            dataSource?.pageController(
-                controller: self,
+            dataSource?.browser(
+                self,
                 configureView: cell,
                 forPageAtIndex: indexPath.item
             )
@@ -135,6 +135,6 @@ extension PageViewController: UICollectionViewDataSource {
     }
 }
 
-extension PageViewController: UICollectionViewDelegate {
+extension BrowserViewController: UICollectionViewDelegate {
     
 }

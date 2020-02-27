@@ -12,19 +12,23 @@ import ComponentKit
 
 final class TestScrollableStackViewController: ScrollableStackViewController {
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        contentView.contentInsetAdjustmentBehavior = .automatic
+        contentView.alwaysBounceVertical = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         // Add test content
         for i in 0 ..< 10 {
             let view = UILabel()
             view.translatesAutoresizingMaskIntoConstraints = false
             view.text = "Label #\(i)"
-            view.backgroundColor = .cyan
+            view.backgroundColor = .yellow
             contentView.stackView.addArrangedSubview(view)
         }
-        
-        #warning("TODO: Fix incorrect scroll position on load")
     }
 
 }

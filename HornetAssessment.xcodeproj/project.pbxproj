@@ -21,8 +21,8 @@
 		FCEDD9AB2407CE7500B181FE /* ScrollableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9AA2407CE7500B181FE /* ScrollableStackView.swift */; };
 		FCEDD9AF2407D38B00B181FE /* ScrollableStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9AE2407D38B00B181FE /* ScrollableStackViewController.swift */; };
 		FCEDD9B12407D46600B181FE /* TestScrollableStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B02407D46600B181FE /* TestScrollableStackViewController.swift */; };
-		FCEDD9B32407D69A00B181FE /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B22407D69A00B181FE /* PageViewController.swift */; };
-		FCEDD9B52407DFEA00B181FE /* TestPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B42407DFEA00B181FE /* TestPageViewController.swift */; };
+		FCEDD9B32407D69A00B181FE /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B22407D69A00B181FE /* BrowserViewController.swift */; };
+		FCEDD9B52407DFEA00B181FE /* TestBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B42407DFEA00B181FE /* TestBrowserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,8 +90,8 @@
 		FCEDD9AA2407CE7500B181FE /* ScrollableStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableStackView.swift; sourceTree = "<group>"; };
 		FCEDD9AE2407D38B00B181FE /* ScrollableStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableStackViewController.swift; sourceTree = "<group>"; };
 		FCEDD9B02407D46600B181FE /* TestScrollableStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScrollableStackViewController.swift; sourceTree = "<group>"; };
-		FCEDD9B22407D69A00B181FE /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
-		FCEDD9B42407DFEA00B181FE /* TestPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPageViewController.swift; sourceTree = "<group>"; };
+		FCEDD9B22407D69A00B181FE /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
+		FCEDD9B42407DFEA00B181FE /* TestBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBrowserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +157,7 @@
 				FCEDD9652407CCA600B181FE /* AppDelegate.swift */,
 				FCEDD9672407CCA600B181FE /* ScrollableStackViewTestViewController.swift */,
 				FCEDD9B02407D46600B181FE /* TestScrollableStackViewController.swift */,
-				FCEDD9B42407DFEA00B181FE /* TestPageViewController.swift */,
+				FCEDD9B42407DFEA00B181FE /* TestBrowserViewController.swift */,
 				FCEDD96C2407CCA700B181FE /* Assets.xcassets */,
 				FCEDD96E2407CCA700B181FE /* LaunchScreen.storyboard */,
 				FCEDD9712407CCA700B181FE /* Info.plist */,
@@ -181,7 +181,7 @@
 				FCEDD98F2407CE6600B181FE /* Info.plist */,
 				FCEDD9AA2407CE7500B181FE /* ScrollableStackView.swift */,
 				FCEDD9AE2407D38B00B181FE /* ScrollableStackViewController.swift */,
-				FCEDD9B22407D69A00B181FE /* PageViewController.swift */,
+				FCEDD9B22407D69A00B181FE /* BrowserViewController.swift */,
 			);
 			path = ComponentKit;
 			sourceTree = "<group>";
@@ -373,7 +373,7 @@
 				FCEDD9682407CCA600B181FE /* ScrollableStackViewTestViewController.swift in Sources */,
 				FCEDD9B12407D46600B181FE /* TestScrollableStackViewController.swift in Sources */,
 				FCEDD9662407CCA600B181FE /* AppDelegate.swift in Sources */,
-				FCEDD9B52407DFEA00B181FE /* TestPageViewController.swift in Sources */,
+				FCEDD9B52407DFEA00B181FE /* TestBrowserViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCEDD9B32407D69A00B181FE /* PageViewController.swift in Sources */,
+				FCEDD9B32407D69A00B181FE /* BrowserViewController.swift in Sources */,
 				FCEDD9AB2407CE7500B181FE /* ScrollableStackView.swift in Sources */,
 				FCEDD9AF2407D38B00B181FE /* ScrollableStackViewController.swift in Sources */,
 			);

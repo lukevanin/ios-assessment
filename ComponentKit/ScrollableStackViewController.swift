@@ -10,12 +10,18 @@ import UIKit
 
 open class ScrollableStackViewController: UIViewController {
     
-    public let contentView: ScrollableStackView = {
-        let view = ScrollableStackView()
-        return view
-    }()
+    public let contentView = ScrollableStackView()
 
     open override func loadView() {
-        self.view = contentView
+        super.loadView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.contentInsetAdjustmentBehavior = .automatic
+        view.addSubview(contentView)
+        NSLayoutConstraint.activate([
+            contentView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            contentView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            contentView.topAnchor.constraint(equalTo: view.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            ])
     }
 }

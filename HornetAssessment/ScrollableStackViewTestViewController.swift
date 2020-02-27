@@ -19,7 +19,7 @@ final class ScrollableStackViewTestViewController: UIViewController {
 
         // Set up scroll view.
         layout.translatesAutoresizingMaskIntoConstraints = false
-        layout.insetsLayoutMarginsFromSafeArea = true
+        layout.contentInsetAdjustmentBehavior = .automatic
         view.addSubview(layout)
         NSLayoutConstraint.activate([
             layout.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -29,18 +29,16 @@ final class ScrollableStackViewTestViewController: UIViewController {
             ])
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
         // Add test content
-        for i in 0 ..< 10 {
+        for i in 0 ..< 100 {
             let view = UILabel()
             view.translatesAutoresizingMaskIntoConstraints = false
             view.text = "Label #\(i)"
             view.backgroundColor = .orange
             layout.stackView.addArrangedSubview(view)
         }
-
-        #warning("TODO: Fix incorrect scroll position on load")
     }
 }

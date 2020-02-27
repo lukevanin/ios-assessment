@@ -13,6 +13,7 @@
 		FCEDD96D2407CCA700B181FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCEDD96C2407CCA700B181FE /* Assets.xcassets */; };
 		FCEDD9702407CCA700B181FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCEDD96E2407CCA700B181FE /* LaunchScreen.storyboard */; };
 		FCEDD97B2407CCA700B181FE /* HornetAssessmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD97A2407CCA700B181FE /* HornetAssessmentTests.swift */; };
+		FCEDD9862407CDF800B181FE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCEDD9852407CDF800B181FE /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		FCEDD9762407CCA700B181FE /* HornetAssessmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HornetAssessmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCEDD97A2407CCA700B181FE /* HornetAssessmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HornetAssessmentTests.swift; sourceTree = "<group>"; };
 		FCEDD97C2407CCA700B181FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCEDD9852407CDF800B181FE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		FCEDD9642407CCA600B181FE /* HornetAssessment */ = {
 			isa = PBXGroup;
 			children = (
+				FCEDD9852407CDF800B181FE /* README.md */,
 				FCEDD9652407CCA600B181FE /* AppDelegate.swift */,
 				FCEDD9672407CCA600B181FE /* ViewController.swift */,
 				FCEDD9692407CCA600B181FE /* Main.storyboard */,
@@ -179,6 +182,7 @@
 			files = (
 				FCEDD9702407CCA700B181FE /* LaunchScreen.storyboard in Resources */,
 				FCEDD96D2407CCA700B181FE /* Assets.xcassets in Resources */,
+				FCEDD9862407CDF800B181FE /* README.md in Resources */,
 				FCEDD96B2407CCA600B181FE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -34,7 +34,6 @@ extension TestScrollableStackViewController: ListControllerDataSource {
         let view = ImageLabelView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.titleLabel.text = "Label #\(index)\n" + spam.joined(separator: "\n")
-        view.backgroundColor = .yellow
         return view
     }
 }

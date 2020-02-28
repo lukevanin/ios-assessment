@@ -9,6 +9,10 @@
 import UIKit
 
 
+///
+/// General purpose CollectionViewCell used to host a view. Used to contain the child scrollable stack view
+/// controller.
+///
 public class ContainerCollectionViewCell: UICollectionViewCell {
     
     typealias OnPrepareForReuse = (ContainerCollectionViewCell) -> Void
@@ -44,6 +48,8 @@ public class ContainerCollectionViewCell: UICollectionViewCell {
     }
     
     private func initialize() {
+        // Disable bounds clipping to allow a child scroll view to scroll
+        // outside the bounds of the cell (ie behind the top and bottom bars).
         clipsToBounds = false
         contentView.clipsToBounds = false
     }
@@ -55,12 +61,33 @@ public class ContainerCollectionViewCell: UICollectionViewCell {
 }
 
 
+///
+/// Data source for the browser view controller. The data source should provide:
+///     1. The count of the number of individual view controllers to display.
+///     2. View controller instance for the given page.
+///
 public protocol BrowserControllerDataSource: class {
+    
+    ///
+    /// Number of view controllers to display.
+    ///
     func numberOfPages(in controller: BrowserViewController) -> Int
+    
+    ///
+    /// View controller for a page at a specific index. The browser view controller does not provide any
+    /// reusability assistance for view controllers. The data source should cache view controllers (e.g using
+    /// an LRU cache) to reduce the overhead of instantiating a view controller.
+    ///
     func browser(_ controller: BrowserViewController, viewControllerForPageAtIndex index: Int) -> UIViewController
 }
 
 
+///
+/// Displays a full screen horizontally scrolling list of view controllers. The implementation of the child view
+/// controllers is dependant on the data source (ie independent of the browser view controller).
+///
+/// Notes: Only portrait mode is currently supported. Pagination does not work correctly in landscape mode.
+///
 open class BrowserViewController: UIViewController {
     
     private let containerCellIdentifier = "container-cell"
@@ -94,7 +121,7 @@ open class BrowserViewController: UIViewController {
         super.loadView()
         
         #warning("TODO: Remove background colour")
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = .white
         collectionView.alwaysBounceHorizontal = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(
@@ -118,6 +145,8 @@ open class BrowserViewController: UIViewController {
     }
     
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        // Adjust the size of the collection view cells when transitioning
+        // portrait and landscape modes.
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
@@ -143,11 +172,19 @@ extension BrowserViewController: UICollectionViewDataSource {
         )
         if let cell = cell as? ContainerCollectionViewCell {
             if let viewController = dataSource?.browser(self, viewControllerForPageAtIndex: indexPath.item) {
+                // Instantiate the view controller for the cell, and attach the
+                // view controller as a child of the current view controller.
+                // Calling willMove() and didMove() is not strictly required
+                // per the documentation, however it is necessary on some
+                // earlier to correctly propogate
+                // view(will/did)(Appear/Disappear) calls.
                 viewController.willMove(toParent: self)
                 addChild(viewController)
                 cell.containedView = viewController.view
                 viewController.didMove(toParent: self)
                 cell.onPrepareForReuse = { [weak viewController] cell in
+                    // Remove the view controller from the parent view
+                    // controller when the cell is recycled.
                     viewController?.willMove(toParent: nil)
                     cell.containedView = nil
                     viewController?.removeFromParent()
@@ -166,6 +203,7 @@ extension BrowserViewController: UICollectionViewDelegate {
 extension BrowserViewController: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        /// Size the collection view cell to the full extent size of the adjusted safe content insets.
         let size = collectionView.bounds.size
         let contentInset = collectionView.adjustedContentInset
         return CGSize(

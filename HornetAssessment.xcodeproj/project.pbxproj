@@ -24,9 +24,7 @@
 		FCEDD9B32407D69A00B181FE /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B22407D69A00B181FE /* BrowserViewController.swift */; };
 		FCEDD9B52407DFEA00B181FE /* TestBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B42407DFEA00B181FE /* TestBrowserViewController.swift */; };
 		FCEDD9B7240827CF00B181FE /* ImageLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B6240827CF00B181FE /* ImageLabelView.swift */; };
-		FCEDD9B924082C8A00B181FE /* KnowYourStatusTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9B824082C8A00B181FE /* KnowYourStatusTestViewController.swift */; };
 		FCEDD9CE2408450500B181FE /* Model.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCEDD9C52408450400B181FE /* Model.framework */; };
-		FCEDD9D52408450500B181FE /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9D42408450500B181FE /* ModelTests.swift */; };
 		FCEDD9D72408450500B181FE /* Model.h in Headers */ = {isa = PBXBuildFile; fileRef = FCEDD9C72408450500B181FE /* Model.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FCEDD9DA2408450500B181FE /* Model.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCEDD9C52408450400B181FE /* Model.framework */; };
 		FCEDD9DB2408450500B181FE /* Model.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FCEDD9C52408450400B181FE /* Model.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -125,7 +123,6 @@
 		FCEDD9B22407D69A00B181FE /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
 		FCEDD9B42407DFEA00B181FE /* TestBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBrowserViewController.swift; sourceTree = "<group>"; };
 		FCEDD9B6240827CF00B181FE /* ImageLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelView.swift; sourceTree = "<group>"; };
-		FCEDD9B824082C8A00B181FE /* KnowYourStatusTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowYourStatusTestViewController.swift; sourceTree = "<group>"; };
 		FCEDD9BA2408432D00B181FE /* KYSService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYSService.swift; sourceTree = "<group>"; };
 		FCEDD9BC240843A500B181FE /* KYSModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYSModel.swift; sourceTree = "<group>"; };
 		FCEDD9BE240844D400B181FE /* KYSModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYSModelTestCase.swift; sourceTree = "<group>"; };
@@ -133,7 +130,6 @@
 		FCEDD9C72408450500B181FE /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		FCEDD9C82408450500B181FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCEDD9CD2408450500B181FE /* ModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FCEDD9D42408450500B181FE /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		FCEDD9D62408450500B181FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,7 +217,6 @@
 				FCEDD9672407CCA600B181FE /* ScrollableStackViewTestViewController.swift */,
 				FCEDD9B02407D46600B181FE /* TestScrollableStackViewController.swift */,
 				FCEDD9B42407DFEA00B181FE /* TestBrowserViewController.swift */,
-				FCEDD9B824082C8A00B181FE /* KnowYourStatusTestViewController.swift */,
 				FCEDD96C2407CCA700B181FE /* Assets.xcassets */,
 				FCEDD96E2407CCA700B181FE /* LaunchScreen.storyboard */,
 				FCEDD9712407CCA700B181FE /* Info.plist */,
@@ -274,7 +269,6 @@
 		FCEDD9D32408450500B181FE /* ModelTests */ = {
 			isa = PBXGroup;
 			children = (
-				FCEDD9D42408450500B181FE /* ModelTests.swift */,
 				FCEDD9BE240844D400B181FE /* KYSModelTestCase.swift */,
 				FCEDD9D62408450500B181FE /* Info.plist */,
 			);
@@ -525,7 +519,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCEDD9B924082C8A00B181FE /* KnowYourStatusTestViewController.swift in Sources */,
 				FCEDD9682407CCA600B181FE /* ScrollableStackViewTestViewController.swift in Sources */,
 				FCEDD9B12407D46600B181FE /* TestScrollableStackViewController.swift in Sources */,
 				FCEDD9662407CCA600B181FE /* AppDelegate.swift in Sources */,
@@ -573,7 +566,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCEDD9D52408450500B181FE /* ModelTests.swift in Sources */,
 				FCEDD9E42408451700B181FE /* KYSModelTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

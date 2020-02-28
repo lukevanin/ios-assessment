@@ -34,7 +34,7 @@ extension TestBrowserViewController: BrowserControllerDataSource {
     
     public func browser(_ controller: BrowserViewController, viewControllerForPageAtIndex index: Int) -> UIViewController {
         let viewController = TestScrollableStackViewController()
-        viewController.view.backgroundColor = colors[index % colors.count]
+        viewController.view.backgroundColor = .white // colors[index % colors.count]
         viewController.contentView.clipsToBounds = false
         return viewController
     }

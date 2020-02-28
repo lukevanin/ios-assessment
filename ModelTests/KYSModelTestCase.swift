@@ -17,7 +17,15 @@ extension MockError: Error {
     
 }
 
-
+///
+/// Mock service for emulating the KYS peristence service during tests. Default behaviour is to fail the test when
+/// any method is called. Calling code should provide closures for the available methods.
+/// Example usage:
+///     let service = MockService()
+///     service._getStatus = { completion in
+///         completion(.failure(SomeError()))
+///     }
+///
 private final class MockService: IKYSService {
     typealias GetStatus = (IKYSService.GetStatusCompletion) -> Void
     typealias PostStatus = (KYSStatus, IKYSService.PostStatusCompletion) -> Void

@@ -19,7 +19,8 @@ public final class ImageLabelView: UIView {
     
     public let imageView = UIImageView()
     public let titleLabel = UILabel()
-    
+    public let separatorView = UIView()
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
@@ -31,24 +32,41 @@ public final class ImageLabelView: UIView {
     }
     
     private func initialize() {
+        backgroundColor = .white
+        isOpaque = true
+        // Image
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .green
+        imageView.backgroundColor = .black
+        // Title
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.backgroundColor = .magenta
+        titleLabel.backgroundColor = .white
+        titleLabel.isOpaque = true
         titleLabel.numberOfLines = 0
+        // Separator
+        separatorView.translatesAutoresizingMaskIntoConstraints = false
+        separatorView.backgroundColor = .lightGray
+        separatorView.isOpaque = true
+        // Layout
         addSubview(imageView)
         addSubview(titleLabel)
+        addSubview(separatorView)
+        let m = CGFloat(2)
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
-            imageView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
+            imageView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: m),
+            imageView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: m),
             imageView.widthAnchor.constraint(equalToConstant: 64),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
-            bottomAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 1) ,
+            bottomAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: imageView.bottomAnchor, multiplier: m) ,
 
-            titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: imageView.trailingAnchor, multiplier: 1),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: titleLabel.trailingAnchor, multiplier: 1),
-            titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
-            bottomAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 1) ,
+            titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: imageView.trailingAnchor, multiplier: m),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: titleLabel.trailingAnchor, multiplier: m),
+            titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: m),
+            bottomAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: m) ,
+            
+            separatorView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: m),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: separatorView.trailingAnchor, multiplier: m),
+            separatorView.heightAnchor.constraint(equalToConstant: 1.0 / UIScreen.main.scale),
+            separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
             ])
     }
 }

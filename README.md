@@ -2,6 +2,16 @@
 Luke Van In
 
 
+## Project structure
+
+* HornetAssessment: Runnable iOS application, demonstrating the 
+`BrowserViewController`.
+* ComponentKit: Framework containing the implementation for `ScrollableStackView`, 
+`ScrollableStackViewController`, `BrowserViewController` for question 4.
+* Model: Illustrative implementation of a finite state machine for question 4.
+* ModelTests: Runnable unit tests for the FSM implemented in the model framework.
+
+
 ## Question 1: Background layout-related crashes
 
 > Right after rushed iOS13 update we started experiencing background related crashes. Call

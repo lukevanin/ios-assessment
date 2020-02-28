@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC1F85C624099BD800D4446D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FC1F85C524099BD800D4446D /* README.md */; };
 		FCEDD9662407CCA600B181FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9652407CCA600B181FE /* AppDelegate.swift */; };
 		FCEDD9682407CCA600B181FE /* ScrollableStackViewTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD9672407CCA600B181FE /* ScrollableStackViewTestViewController.swift */; };
 		FCEDD96D2407CCA700B181FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCEDD96C2407CCA700B181FE /* Assets.xcassets */; };
@@ -100,6 +101,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FC1F85C524099BD800D4446D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FCEDD9622407CCA600B181FE /* HornetAssessment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HornetAssessment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCEDD9652407CCA600B181FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCEDD9672407CCA600B181FE /* ScrollableStackViewTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableStackViewTestViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		FCEDD9592407CCA600B181FE = {
 			isa = PBXGroup;
 			children = (
+				FC1F85C524099BD800D4446D /* README.md */,
 				FCEDD9642407CCA600B181FE /* HornetAssessment */,
 				FCEDD9792407CCA700B181FE /* HornetAssessmentTests */,
 				FCEDD98D2407CE6600B181FE /* ComponentKit */,
@@ -468,6 +471,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC1F85C624099BD800D4446D /* README.md in Resources */,
 				FCEDD9702407CCA700B181FE /* LaunchScreen.storyboard in Resources */,
 				FCEDD96D2407CCA700B181FE /* Assets.xcassets in Resources */,
 			);

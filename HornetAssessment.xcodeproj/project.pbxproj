@@ -12,7 +12,6 @@
 		FCEDD96D2407CCA700B181FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCEDD96C2407CCA700B181FE /* Assets.xcassets */; };
 		FCEDD9702407CCA700B181FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCEDD96E2407CCA700B181FE /* LaunchScreen.storyboard */; };
 		FCEDD97B2407CCA700B181FE /* HornetAssessmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD97A2407CCA700B181FE /* HornetAssessmentTests.swift */; };
-		FCEDD9862407CDF800B181FE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCEDD9852407CDF800B181FE /* README.md */; };
 		FCEDD9952407CE6600B181FE /* ComponentKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCEDD98C2407CE6600B181FE /* ComponentKit.framework */; };
 		FCEDD99C2407CE6600B181FE /* ComponentKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD99B2407CE6600B181FE /* ComponentKitTests.swift */; };
 		FCEDD99E2407CE6600B181FE /* ComponentKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FCEDD98E2407CE6600B181FE /* ComponentKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -110,7 +109,6 @@
 		FCEDD9762407CCA700B181FE /* HornetAssessmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HornetAssessmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCEDD97A2407CCA700B181FE /* HornetAssessmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HornetAssessmentTests.swift; sourceTree = "<group>"; };
 		FCEDD97C2407CCA700B181FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FCEDD9852407CDF800B181FE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FCEDD98C2407CE6600B181FE /* ComponentKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ComponentKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCEDD98E2407CE6600B181FE /* ComponentKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComponentKit.h; sourceTree = "<group>"; };
 		FCEDD98F2407CE6600B181FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -212,7 +210,6 @@
 		FCEDD9642407CCA600B181FE /* HornetAssessment */ = {
 			isa = PBXGroup;
 			children = (
-				FCEDD9852407CDF800B181FE /* README.md */,
 				FCEDD9652407CCA600B181FE /* AppDelegate.swift */,
 				FCEDD9672407CCA600B181FE /* ScrollableStackViewTestViewController.swift */,
 				FCEDD9B02407D46600B181FE /* TestScrollableStackViewController.swift */,
@@ -473,7 +470,6 @@
 			files = (
 				FCEDD9702407CCA700B181FE /* LaunchScreen.storyboard in Resources */,
 				FCEDD96D2407CCA700B181FE /* Assets.xcassets in Resources */,
-				FCEDD9862407CDF800B181FE /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
